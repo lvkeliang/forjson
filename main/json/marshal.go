@@ -42,7 +42,8 @@ func parseParam(obj any) (jsonString string, err error) {
 		reflect.Int32,
 		reflect.Int64,
 		reflect.Float32,
-		reflect.Float64:
+		reflect.Float64,
+		reflect.Bool:
 		return fmt.Sprintf("%v", reflect.ValueOf(obj)), nil
 
 	case reflect.String:
@@ -100,7 +101,6 @@ func parseParam(obj any) (jsonString string, err error) {
 
 			key := fieldType.Field(i).Name
 			tag := fieldType.Field(i).Tag.Get(tagName)
-			fmt.Println("tag:" + tag)
 
 			if tag != "" {
 				key = tag
